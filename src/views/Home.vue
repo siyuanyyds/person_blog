@@ -26,36 +26,36 @@
           <v-col
             cols="12"
             sm="6"
-            class="d-flex flex-column justify-center"
-          >
-            <h1 class="display-3 font-weight-bold text-white">文思源</h1>
-            <p class="text-h6 text-white mb-8">
-              记录生活点滴，分享知识与成长经验。
-            </p>
-          </v-col>
-
-          <v-col
-            cols="12"
-            sm="4"
             class="d-flex flex-column justify-center align-center"
           >
-            <v-btn
-              large
-              color="primary"
-              class="mb-4 custom-btn"
-              @click="goToBlog"
-            >
-              浏览博客
-            </v-btn>
-            <v-btn
-              large
-              outlined
-              color="white"
-              class="custom-btn"
-              @click="goToAbout"
-            >
-              关于我
-            </v-btn>
+            <!-- 文字内容在一行 -->
+            <div class="text-content d-flex flex-column align-center">
+              <h1 class="display-3 font-weight-bold text-white">文思源</h1>
+              <p class="text-h6 text-white mb-8">
+                记录生活点滴，分享知识与成长经验。
+              </p>
+            </div>
+            
+            <!-- 按钮在单独的一行 -->
+            <div class="button-group d-flex flex-column align-center">
+              <v-btn
+                large
+                color="primary"
+                class="mb-4 custom-btn"
+                @click="goToBlog"
+              >
+                浏览博客
+              </v-btn>
+              <v-btn
+                large
+                outlined
+                color="white"
+                class="custom-btn"
+                @click="goToAbout"
+              >
+                关于我
+              </v-btn>
+            </div>
           </v-col>
         </v-row>
       </v-container>
@@ -69,7 +69,6 @@
     </footer>
   </div>
 </template>
-
 
 <script>
 export default {
@@ -130,9 +129,15 @@ export default {
 .custom-btn {
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: transparent !important; /* 背景透明 */
+  color: white !important; /* 文字颜色设置为白色 */
+  border-radius: 50px; /* 最大圆角矩形 */
+  border: none; /* 去除边框 */
 }
 
 .custom-btn:hover {
+  background-color: white !important; /* 鼠标悬浮时背景变为白色 */
+  color: black !important; /* 鼠标悬浮时文字颜色变为黑色 */
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
@@ -167,6 +172,18 @@ export default {
 
 .content-wrapper {
   flex: 1; /* 内容区域自动扩展 */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* 内容垂直居中 */
+}
+
+/* 保证内容垂直方向上按块排列 */
+.text-content {
+  text-align: center; /* 确保标题和描述居中 */
+}
+
+.button-group {
+  text-align: center; /* 确保按钮在按钮组中居中 */
 }
 
 /* 底部样式 */
@@ -193,6 +210,4 @@ export default {
 .footer-link:hover {
   text-decoration: underline;
 }
-
-
 </style>
